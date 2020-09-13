@@ -56,8 +56,15 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	//fmt.Fprint(w, "Hello, World!")
-	fmt.Fprint(w, "Hello, Himeji-3!")
+	var.himeji1 Himeji
+  himeji1.deploy()
+}
+// [END indexHandler]
+
+// Himeji
+type Himeji struct {} 
+func (h Himeji) deploy() {
+	fmt.Fprint(w, "Start Himeji")
 }
 
-// [END indexHandler]
 // [END gae_go111_app]
