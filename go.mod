@@ -1,3 +1,3 @@
-module helloworld
+module himeji
 
 go 1.12
