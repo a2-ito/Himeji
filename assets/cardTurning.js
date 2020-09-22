@@ -38,7 +38,7 @@ isBack["img17"] = true;
 isBack["img18"] = true;
 
 function initcard(){
-	URL = 'http://localhost:8080/card'
+	URL = location.href + 'card'
   var request = new XMLHttpRequest();
   request.open('GET', URL, true);
   request.onload = function () {
@@ -54,7 +54,7 @@ function initcard(){
 }
 
 function shufflecard() {
-	URL = 'http://localhost:8080/shuffle'
+	URL = location.href + 'shuffle'
   var request = new XMLHttpRequest();
   request.open('GET', URL, true);
   // リクエストをURLに送信
