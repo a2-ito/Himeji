@@ -44,20 +44,31 @@ function initcard(){
   request.onload = function () {
       var data = JSON.parse(this.response);
 		  for (var i = 0, len = data.length; i < len; ++i){
-        console.log(data[i].Mark + data[i].Number);
+        //console.log(data[i].Mark + data[i].Number);
 				var ret = ( '00' + i ).slice( -2 );
 				t["img"+ret] = data[i].Mark + data[i].Number;
 			}
   }
-  // リクエストをURLに送信
   request.send();
+}
+
+function resetcard() {
+	for (key in isBack) {
+		if(isBack[key] === false){
+      const element = document.getElementById(key);
+  	  let imagePath =  '/assets/img/backcard.png';
+      rotationAnimationLoop(element, imagePath, 0);
+			isBack[key] = true;
+  	}
+  }
+	initcard();
+  shufflecard();
 }
 
 function shufflecard() {
 	URL = location.href + 'shuffle'
   var request = new XMLHttpRequest();
   request.open('GET', URL, true);
-  // リクエストをURLに送信
   request.send();
 }
 
@@ -84,6 +95,12 @@ if(buttonElem_s !== null){
     });
 }
 
+const buttonElem_r = document.getElementById('button_reset');
+if(buttonElem_r !== null){
+    buttonElem_r.addEventListener('click', () => {
+      resetcard()
+    });
+}
 
 /* カードを捲る処理を指定された角度になるまでループさせる関数
 * @param  {Object} element   imgタグのElement Object
